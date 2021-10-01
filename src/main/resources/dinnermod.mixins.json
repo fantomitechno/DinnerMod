@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "fr.fantomitechno.dinnermod.mixins",
+  "compatibilityLevel": "JAVA_16",
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "client": [
+    "DinnerModMixin"
+  ]
+}
