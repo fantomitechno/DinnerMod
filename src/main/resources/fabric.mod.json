@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "dinnermod",
-  "version": "1.0",
+  "version": "${version}",
   "name": "DinnerMod",
   "description": "A mod to be like DinnerBone",
   "authors": [
@@ -12,20 +12,13 @@
   "icon": "assets/dinnermod/icon.png",
   "environment": "*",
   "entrypoints": {
-    "main": [
-      {
-        "adapter": "kotlin",
-        "value": "fr.fantomitechno.dinnermod.DinnerMod"
-      }
-    ]
+    "main": ["fr.fantomitechno.dinnermod.DinnerMod"]
   },
   "mixins": [
     "dinnermod.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.11.7",
-    "fabric": "*",
-    "fabric-language-kotlin": ">=1.6.4+kotlin.1.5.30",
     "minecraft": "1.17.x",
     "java": ">=16"
   }
