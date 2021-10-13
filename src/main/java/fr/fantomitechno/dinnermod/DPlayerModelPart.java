@@ -1,6 +1,7 @@
 package fr.fantomitechno.dinnermod;
 
 import net.minecraft.client.render.entity.PlayerModelPart;
+import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 
@@ -18,7 +19,7 @@ public enum DPlayerModelPart {
         this.id = id;
         this.bitFlag = 1 << id;
         this.name = name;
-        this.optionName = new TranslatableText("options.modelPart." + name);
+        this.optionName = new LiteralText(name);
         this.enabled = true;
     }
 
