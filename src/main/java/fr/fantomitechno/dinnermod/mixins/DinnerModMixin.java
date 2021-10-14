@@ -1,5 +1,6 @@
 package fr.fantomitechno.dinnermod.mixins;
 
+import fr.fantomitechno.dinnermod.DPlayerModelPart;
 import net.minecraft.client.render.entity.LivingEntityRenderer;
 import net.minecraft.client.render.entity.PlayerModelPart;
 import net.minecraft.client.util.math.MatrixStack;
@@ -17,7 +18,7 @@ public class DinnerModMixin {
     @Inject(at = @At("TAIL"), method = "setupTransforms")
     private void dinnerBone(LivingEntity entity, MatrixStack matrices, float animationProgress, float bodyYaw, float tickDelta, CallbackInfo ci) {
         if(!(entity instanceof PlayerEntity player)) return;
-        if(player.isMainPlayer() && player.isPartVisible(PlayerModelPart.CAPE)) {
+        if(player.isMainPlayer() && DPlayerModelPart.DINNERBONE.isEnabled()) {
             matrices.translate(0D, player.getHeight() + .1, 0);
             matrices.multiply(Vec3f.POSITIVE_Z.getDegreesQuaternion(180));
         }
