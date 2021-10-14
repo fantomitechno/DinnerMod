@@ -2,14 +2,21 @@
   "schemaVersion": 1,
   "id": "dinnermod",
   "version": "${version}",
+
   "name": "DinnerMod",
   "description": "A mod to be like DinnerBone",
   "authors": [
     "fantomitechno"
   ],
-  "contact": {  },
-  "license": "GNU Lesser General Public License version 3 (LGPLv3)",
+  "contact": {
+    "homepage": "https://modrinth.com/mod/dinnermod",
+    "sources": "https://github.com/fantomitechno/DinnerMod",
+    "issues": "https://github.com/fantomitechno/DinnerMod/issues"
+  },
+
+  "license": "MIT",
   "icon": "assets/dinnermod/icon.png",
+
   "environment": "*",
   "entrypoints": {
     "main": ["fr.fantomitechno.dinnermod.DinnerMod"]
@@ -17,8 +24,10 @@
   "mixins": [
     "dinnermod.mixins.json"
   ],
+
   "depends": {
     "fabricloader": ">=0.11.7",
+    "fabric": "*",
     "minecraft": "1.17.x",
     "java": ">=16"
   }
