@@ -1,7 +1,6 @@
 package fr.fantomitechno.dinnermod;
 
 import net.fabricmc.api.ModInitializer;
-
 import org.apache.logging.log4j.LogManager;
 
 public class DinnerMod implements ModInitializer {

@@ -7,20 +7,20 @@ import net.minecraft.text.TranslatableText;
 
 public enum DPlayerModelPart {
 
-    DINNERBONE(PlayerModelPart.values().length, "dinnerbone");
+    DINNERBONE(PlayerModelPart.values().length, "Dinnerbone");
 
     private final int id;
     private final int bitFlag;
     private final String name;
     private final Text optionName;
-    private boolean enabled;
+    private byte enabled;
 
     DPlayerModelPart(int id, String name) {
         this.id = id;
         this.bitFlag = 1 << id;
         this.name = name;
         this.optionName = new LiteralText(name);
-        this.enabled = true;
+        this.enabled = 1;
     }
 
     public int getId() {
@@ -39,11 +39,26 @@ public enum DPlayerModelPart {
         return optionName;
     }
 
-    public boolean isEnabled() {
+    public byte getEnabled() {
         return enabled;
     }
 
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
+    public void addEnabled() {
+        if(enabled == 3) enabled = 0;
+        else enabled++;
+    }
+
+    public String getRotation() {
+        return switch (getEnabled()) {
+            case 0 -> "Disabled";
+            case 1 -> "Down";
+            case 2 -> "Left";
+            case 3 -> "Right";
+            default -> throw new IllegalStateException("Unexpected value: " + enabled);
+        };
+    }
+
+    public TranslatableText getText() {
+        return new TranslatableText("options.dinnermod.modelpart", this.getRotation());
     }
 }

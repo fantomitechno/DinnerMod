@@ -43,9 +43,13 @@ public class SkinOptionsScreenMixin extends GameOptionsScreen {
         if (i % 2 == 1) ++i;
 
         DPlayerModelPart playerModelPart = DPlayerModelPart.DINNERBONE;
-        this.addDrawableChild(CyclingButtonWidget.onOffBuilder(playerModelPart.isEnabled()).build(this.width / 2 - 155 + i % 2 * 160,
-                this.height / 6 + 24 * (i >> 1), 150, 20, playerModelPart.getOptionName(),
-                (button, enabled) -> playerModelPart.setEnabled(enabled)));
+
+        this.addDrawableChild(new ButtonWidget(this.width / 2 - 155 + i % 2 * 160,
+                this.height / 6 + 24 * (i >> 1), 150, 20, playerModelPart.getText(),
+                button -> {
+                    playerModelPart.addEnabled();
+                    button.setMessage(playerModelPart.getText());
+                }));
 
         ++i;
 
