@@ -1,6 +1,5 @@
-package fr.fantomitechno.dinnermod.mixins;
+package dev.renoux.dinnermod.mixins;
 
-import fr.fantomitechno.dinnermod.DPlayerModelPart;
 import net.minecraft.client.render.entity.LivingEntityRenderer;
 import net.minecraft.client.render.entity.PlayerModelPart;
 import net.minecraft.client.util.math.MatrixStack;
@@ -14,6 +13,8 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
+
+import dev.renoux.dinnermod.DPlayerModelPart;
 
 @Mixin(LivingEntityRenderer.class)
 public class DinnerModMixin {

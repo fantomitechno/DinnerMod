@@ -1,9 +1,8 @@
-package fr.fantomitechno.dinnermod;
+package dev.renoux.dinnermod;
 
 import net.minecraft.client.render.entity.PlayerModelPart;
-import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
+import net.minecraft.text.TranslatableTextContent;
 
 public enum DPlayerModelPart {
 
@@ -19,7 +18,7 @@ public enum DPlayerModelPart {
         this.id = id;
         this.bitFlag = 1 << id;
         this.name = name;
-        this.optionName = new LiteralText(name);
+        this.optionName = Text.of(name);
         this.enabled = 1;
     }
 
@@ -58,7 +57,7 @@ public enum DPlayerModelPart {
         };
     }
 
-    public TranslatableText getText() {
-        return new TranslatableText("options.dinnermod.modelpart", this.getRotation());
+    public TranslatableTextContent getText() {
+        return new TranslatableTextContent("options.dinnermod.modelpart", this.getRotation());
     }
 }

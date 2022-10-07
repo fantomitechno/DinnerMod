@@ -1,6 +1,5 @@
-package fr.fantomitechno.dinnermod.mixins;
+package dev.renoux.dinnermod.mixins;
 
-import fr.fantomitechno.dinnermod.DPlayerModelPart;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.screen.ScreenTexts;
 import net.minecraft.client.gui.screen.option.GameOptionsScreen;
@@ -13,6 +12,8 @@ import net.minecraft.client.render.entity.PlayerModelPart;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
+
+import dev.renoux.dinnermod.DPlayerModelPart;
 
 @Mixin(SkinOptionsScreen.class)
 public class SkinOptionsScreenMixin extends GameOptionsScreen {
