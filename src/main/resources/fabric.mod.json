@@ -19,16 +19,15 @@
 
   "environment": "*",
   "entrypoints": {
-    "main": ["fr.fantomitechno.dinnermod.DinnerMod"]
+    "main": ["dev.renoux.dinnermod.DinnerMod"]
   },
   "mixins": [
     "dinnermod.mixins.json"
   ],
 
   "depends": {
-    "fabricloader": ">=0.12.10",
-    "fabric": "*",
-    "minecraft": "1.18.x",
+    "fabricloader": ">=0.14.9",
+    "minecraft": "~1.19",
     "java": ">=17"
   }
 }

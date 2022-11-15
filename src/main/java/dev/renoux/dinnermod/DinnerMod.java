@@ -1,4 +1,4 @@
-package fr.fantomitechno.dinnermod;
+package dev.renoux.dinnermod;
 
 import net.fabricmc.api.ModInitializer;
 import org.apache.logging.log4j.LogManager;

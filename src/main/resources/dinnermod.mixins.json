@@ -1,6 +1,6 @@
 {
   "required": true,
-  "package": "fr.fantomitechno.dinnermod.mixins",
+  "package": "dev.renoux.dinnermod.mixins",
   "compatibilityLevel": "JAVA_16",
   "injectors": {
     "defaultRequire": 1
