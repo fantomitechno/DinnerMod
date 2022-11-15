@@ -1,6 +1,7 @@
 package dev.renoux.dinnermod;
 
 import net.minecraft.client.render.entity.PlayerModelPart;
+import net.minecraft.text.MutableText;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableTextContent;
 
@@ -43,8 +44,10 @@ public enum DPlayerModelPart {
     }
 
     public void addEnabled() {
-        if(enabled == 3) enabled = 0;
-        else enabled++;
+        if (enabled == 3)
+            enabled = 0;
+        else
+            enabled++;
     }
 
     public String getRotation() {
@@ -57,7 +60,7 @@ public enum DPlayerModelPart {
         };
     }
 
-    public TranslatableTextContent getText() {
-        return new TranslatableTextContent("options.dinnermod.modelpart", this.getRotation());
+    public MutableText getText() {
+        return Text.translatable("options.dinnermod.modelpart", this.getRotation());
     }
 }

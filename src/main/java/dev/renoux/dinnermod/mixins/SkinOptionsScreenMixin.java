@@ -9,6 +9,7 @@ import net.minecraft.client.gui.widget.CyclingButtonWidget;
 import net.minecraft.client.option.GameOptions;
 //import net.minecraft.client.option.Option;
 import net.minecraft.client.render.entity.PlayerModelPart;
+import net.minecraft.screen.ScreenTexts;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
@@ -41,26 +42,22 @@ public class SkinOptionsScreenMixin extends GameOptionsScreen {
             ++i;
         }
 
-        //this.addDrawableChild(Option.MAIN_HAND.createButton(this.gameOptions, this.width / 2 - 155 + i % 2 * 160,
-        //        this.height / 6 + 24 * (i >> 1), 150));
+        this.addDrawableChild(
+                this.gameOptions.getMainArm().createButton(this.gameOptions, this.width / 2 - 155 + i % 2 * 160,
+                        this.height / 6 + 24 * (i >> 1), 150));
         ++i;
         if (i % 2 == 1)
             ++i;
 
         DPlayerModelPart playerModelPart = DPlayerModelPart.DINNERBONE;
-        /*
-        this.addDrawableChild(new ButtonWidget(this.width / 2 - 155 + i % 2 * 160,
-                this.height / 6 + 24 * (i >> 1), 150, 20, playerModelPart.getText(),
-                button -> {
+        this.addDrawableChild(new ButtonWidget(this.width / 2 - 155 + i % 2 * 160, this.height / 6 + 24 * (i >> 1), 150,
+                20, playerModelPart.getText(), button -> {
                     playerModelPart.addEnabled();
                     button.setMessage(playerModelPart.getText());
                 }));
-        
         ++i;
-        
         this.addDrawableChild(
                 new ButtonWidget(this.width / 2 - 100, this.height / 6 + 30 * (i >> 1), 200, 20, ScreenTexts.DONE,
                         (button) -> this.client.setScreen(this.parent)));
-                         */
     }
 }
