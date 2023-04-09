@@ -3,15 +3,13 @@
   "id": "dinnermod",
   "version": "${version}",
 
-  "name": "DinnerMod",
-  "description": "A mod to be like DinnerBone",
+  "name": "Dinnermod",
+  "description": "Just a mod to be like Dinnerbone and more",
   "authors": [
-    "fantomitechno"
+    "Simon - fantomitechno (aka Simon R)"
   ],
   "contact": {
-    "homepage": "https://modrinth.com/mod/dinnermod",
-    "sources": "https://github.com/fantomitechno/DinnerMod",
-    "issues": "https://github.com/fantomitechno/DinnerMod/issues"
+    "sources": "https://github.com/fantomitechno/Dinnermod"
   },
 
   "license": "MIT",
@@ -19,15 +17,17 @@
 
   "environment": "*",
   "entrypoints": {
-    "main": ["dev.renoux.dinnermod.DinnerMod"]
+    "client": [
+      "dev.renoux.dinnermod.Dinnermod"
+    ]
   },
   "mixins": [
     "dinnermod.mixins.json"
   ],
 
   "depends": {
-    "fabricloader": ">=0.14.9",
-    "minecraft": "~1.19",
+    "fabricloader": ">=0.14.6",
+    "minecraft": ">=1.19",
     "java": ">=17"
   }
 }

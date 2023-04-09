@@ -1,12 +1,13 @@
 {
   "required": true,
+  "minVersion": "0.8",
   "package": "dev.renoux.dinnermod.mixins",
-  "compatibilityLevel": "JAVA_16",
+  "compatibilityLevel": "JAVA_17",
+  "client": [
+    "SkinOptionsScreenMixin",
+    "LivingEntityRendererMixin"
+  ],
   "injectors": {
     "defaultRequire": 1
-  },
-  "client": [
-    "DinnerModMixin",
-    "SkinOptionsScreenMixin"
-  ]
+  }
 }
