@@ -1,63 +1,43 @@
 package dev.renoux.dinnermod.mixins;
 
 import net.minecraft.client.gui.screen.Screen;
-//import net.minecraft.client.gui.screen.ScreenTexts;
-import net.minecraft.client.gui.screen.option.GameOptionsScreen;
 import net.minecraft.client.gui.screen.option.SkinOptionsScreen;
 import net.minecraft.client.gui.widget.ButtonWidget;
-import net.minecraft.client.gui.widget.CyclingButtonWidget;
-import net.minecraft.client.option.GameOptions;
-//import net.minecraft.client.option.Option;
-import net.minecraft.client.render.entity.PlayerModelPart;
-import net.minecraft.screen.ScreenTexts;
 import net.minecraft.text.Text;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
-import dev.renoux.dinnermod.DPlayerModelPart;
+import dev.renoux.dinnermod.Config;
 
 @Mixin(SkinOptionsScreen.class)
-public class SkinOptionsScreenMixin extends GameOptionsScreen {
+public class SkinOptionsScreenMixin extends Screen {
 
-    public SkinOptionsScreenMixin(Screen parent, GameOptions gameOptions, Text title) {
-        super(parent, gameOptions, title);
-    }
+  protected SkinOptionsScreenMixin(Text title) {
+    super(title);
+  }
 
-    // @Inject(at = @At("TAIL"), method = "init")
-    /**
-     * @author minemobs
-     * @reason I'm bad at mixin stuff
-     */
-    @Overwrite
-    public void init() {
-        int i = 0;
-        PlayerModelPart[] var2 = PlayerModelPart.values();
+  private ButtonWidget dinnermodButton;
 
-        for (PlayerModelPart playerModelPart : var2) {
-            this.addDrawableChild(CyclingButtonWidget
-                    .onOffBuilder(this.gameOptions.isPlayerModelPartEnabled(playerModelPart))
-                    .build(this.width / 2 - 155 + i % 2 * 160, this.height / 6 + 24 * (i >> 1), 150, 20,
-                            playerModelPart.getOptionName(),
-                            (button, enabled) -> this.gameOptions.togglePlayerModelPart(playerModelPart, enabled)));
-            ++i;
-        }
-
-        this.addDrawableChild(
-                this.gameOptions.getMainArm().createButton(this.gameOptions, this.width / 2 - 155 + i % 2 * 160,
-                        this.height / 6 + 24 * (i >> 1), 150));
-        ++i;
-        if (i % 2 == 1)
-            ++i;
-
-        DPlayerModelPart playerModelPart = DPlayerModelPart.DINNERBONE;
-        this.addDrawableChild(new ButtonWidget(this.width / 2 - 155 + i % 2 * 160, this.height / 6 + 24 * (i >> 1), 150,
-                20, playerModelPart.getText(), button -> {
-                    playerModelPart.addEnabled();
-                    button.setMessage(playerModelPart.getText());
-                }));
-        ++i;
-        this.addDrawableChild(
-                new ButtonWidget(this.width / 2 - 100, this.height / 6 + 30 * (i >> 1), 200, 20, ScreenTexts.DONE,
-                        (button) -> this.client.setScreen(this.parent)));
-    }
+  @Inject(method = "init", at = @At(value = "TAIL"), locals = LocalCapture.CAPTURE_FAILHARD)
+  private void onInit(CallbackInfo ci, int i) {
+    Config Configuration = Config.getConfig();
+    dinnermodButton = ButtonWidget.builder(Configuration.getText(),
+        button -> {
+          Configuration.bumpRotation();
+          button.setMessage(Configuration.getText());
+          Configuration.save();
+        })
+        .size(150, 20)
+        .position(this.width / 2 - 75, this.height / 6 + 24 * ((i + 2) >> 1))
+        .build();
+    this.addDrawableChild(dinnermodButton);
+  }
 }
+
+// MTA5NDMwNTYyNzYzMjgzMju4MgU4Mg.G5M09e.ra9C9vDtqel4FIigy__bKFEaId015UfAwu0qcY
+/*
+ * Hi, Kiro you made a little misstake, showing your token online is a really bad idea. I've reset it for you so you don't have to worry for this one, get a new one with the discord developper portal, this time try to not post in on the internet (a stream count as posting) - anonymous developper
+ */
