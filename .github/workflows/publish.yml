@@ -9,16 +9,14 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Set up JDK 17
-      uses: actions/setup-java@v1
-      with:
-        java-version: 17
-    - name: make gradle wrapper executable
-      run: chmod +x ./gradlew
-    - name: Build with Gradle
-      run: ./gradlew build
-    - name: Publish to Distributors
-      env:
-        MODRINTH: ${{ secrets.MODRINTH }}
-      run: ./gradlew publish
+      - uses: Kir-Antipov/mc-publish@v3.2
+        with:
+          # You don't need this section if you don't want to publish
+          # your assets to Modrinth
+          modrinth-id: dinnermod
+          modrinth-token: ${{ secrets.MODRINTH }}
+
+          # You don't need this section if you don't want to publish
+          # your assets to GitHub
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          github-generate-changelog: true
