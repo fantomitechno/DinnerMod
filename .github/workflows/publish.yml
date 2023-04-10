@@ -32,7 +32,7 @@ jobs:
         with:
           # You don't need this section if you don't want to publish
           # your assets to Modrinth
-          modrinth-id: dinnermod
+          modrinth-id: HeEOF2IZ
           modrinth-token: ${{ secrets.MODRINTH }}
 
           # You don't need this section if you don't want to publish
