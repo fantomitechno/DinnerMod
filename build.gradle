@@ -73,7 +73,7 @@ publishing {
 }
 
 modrinth {
-    token = System.getenv("MODRINTH_TOKEN")
+    token = System.getenv("MODRINTH")
     projectId = "dinnermod"
     versionNumber = project.version
     versionType = "release"
