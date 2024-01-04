@@ -1,11 +1,14 @@
+name: Release
 
-name: publish
 on:
   release:
     types: [published]
 
+permissions:
+  contents: write
+
 jobs:
-  publish:
+  build:
     strategy:
       matrix:
         # Use these Java versions
@@ -28,14 +31,9 @@ jobs:
         run: chmod +x ./gradlew
       - name: build
         run: ./gradlew build
-      - uses: Kir-Antipov/mc-publish@v3.2
+      - uses: Kir-Antipov/mc-publish@v3.3
         with:
-          # You don't need this section if you don't want to publish
-          # your assets to Modrinth
-          modrinth-id: HeEOF2IZ
-          modrinth-token: ${{ secrets.MODRINTH }}
+          modrinth-id: ${{ secrets.MODRINTH_ID }}
+          modrinth-token: ${{ secrets.MODRINTH_TOKEN }}
 
-          # You don't need this section if you don't want to publish
-          # your assets to GitHub
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          github-generate-changelog: true
+          github-token: ${{ secrets.GITHUB_TOKEN  }}
