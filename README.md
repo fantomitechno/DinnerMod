@@ -1,4 +1,8 @@
 # DinnerMod
+![fabric](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/supported/fabric_vector.svg)
+
+[![modrinth](https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/available/modrinth_vector.svg)](https://modrinth.com/mod/dinnermod)
+
 Just a mod that make you as DinnerBone, upside down :
 
 ![Image 1](https://i.imgur.com/Zsks0EF.png)
