@@ -1,14 +1,15 @@
 package dev.renoux.dinnermod.mixins;
 
 import net.minecraft.client.render.entity.LivingEntityRenderer;
-import net.minecraft.client.render.entity.PlayerModelPart;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.entity.LivingEntity;
 import net.minecraft.entity.passive.*;
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.entity.player.PlayerModelPart;
 import net.minecraft.util.Formatting;
 import net.minecraft.util.math.RotationAxis;
 import org.spongepowered.asm.mixin.Mixin;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -19,25 +20,29 @@ import dev.renoux.dinnermod.Config;
 @Mixin(LivingEntityRenderer.class)
 public class LivingEntityRendererMixin {
 
+  @Unique
   private void transformFromName(String string, MatrixStack matrices) {
-    if (string.equals("Pisteur_alpin")) {
-      matrices.translate(0.3D, 0.1F, 0.0D);
-      matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(15.0F));
-    } else if (string.equals("Kresqle")) {
-      matrices.translate(0.8D, 0.1F, 0.0D);
-      matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(42.0F));
-    } else if (string.equals("Aragorn1202")) {
-      matrices.translate(0.0D, 0.1F, 0.0D);
-      matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(5.0F));
-    }
+      switch (string) {
+          case "Pisteur_alpin" -> {
+              matrices.translate(0.3D, 0.1F, 0.0D);
+              matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(15.0F));
+          }
+          case "Kresqle" -> {
+              matrices.translate(0.8D, 0.1F, 0.0D);
+              matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(42.0F));
+          }
+          case "Aragorn1202" -> {
+              matrices.translate(0.0D, 0.1F, 0.0D);
+              matrices.multiply(RotationAxis.POSITIVE_Z.rotationDegrees(5.0F));
+          }
+      }
   }
 
   @Inject(at = @At("TAIL"), method = "setupTransforms")
-  private void setupTransforms(LivingEntity entity, MatrixStack matrices, float animationProgress, float bodyYaw,
-      float tickDelta, CallbackInfo ci) {
+  private void setupTransforms(LivingEntity entity, MatrixStack matrices, float animationProgress, float bodyYaw, float tickDelta, float scale, CallbackInfo ci) {
     Config Configuration = Config.getConfig();
     if ((entity instanceof PlayerEntity player)) {
-      String string = player.getEntityName();
+      String string = player.getName().getString();
       if (player.isMainPlayer() && Configuration.getRotation() > 1) {
         switch (Configuration.getRotation()) {
           case 2 -> {
@@ -64,7 +69,7 @@ public class LivingEntityRendererMixin {
     Config Configuration = Config.getConfig();
     boolean value = false;
     if (entity instanceof PlayerEntity player) {
-      String string = player.getEntityName();
+      String string = player.getName().getString();
       if ((player.isMainPlayer() && Configuration.getRotation() == 1) || ((string.equals("fantomitechno")
           || string.equals("fant0mib0t") || string.equals("NewGlace") || string.equals("Hardel")
           || string.equals("Dinnerbone") || string.equals("Grumm")) && !player.isMainPlayer())) {

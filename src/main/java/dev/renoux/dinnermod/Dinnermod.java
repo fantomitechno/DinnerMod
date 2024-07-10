@@ -34,8 +34,6 @@ public class Dinnermod implements ClientModInitializer {
   public static final String MODID = "dinnermod";
   public static final Logger LOGGER = LoggerFactory.getLogger(MODID);
 
-  public static KeyBinding toogleGridKeyBind;
-
   @Override
   public void onInitializeClient() {
     LOGGER.info("Dinnermod : LOADING");

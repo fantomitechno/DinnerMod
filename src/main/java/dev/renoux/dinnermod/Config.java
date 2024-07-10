@@ -126,6 +126,6 @@ public class Config {
     }
 
     public MutableText getText() {
-        return Text.translatable("options.dinnermod.modelpart", this.getRotationText());
+        return Text.literal("DinnerMod: " + this.getRotationText());
     }
 }
